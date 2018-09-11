@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html>
+
+<head> <!-- head includes various info such as title and metadata -->
+	<title>javaScript Clock</title>
+
+	<!-- the following is used to get non-native font from "google fonts" -->
+	<link href='https://fonts.googleapis.com/css?family=Alex Brush' rel='stylesheet'>
+	
+
+	<!-- This is the CSS part that sets h1 to the follwong style -->
+	<style> 
+	h1 {font-family: "Alex Brush" ; font-size: 60px;} 
+	h2 {font-family: "Alex Brush" ; font-size: 40px;} 
+	div {font-family: "Alex Brush" ; font-size: 50px;} 
+	</style>
+
+<script>
+	function clock(){
+		var today = new Date();
+		var hours = today.getHours();
+		var min = today.getMinutes();
+		var sec = today.getSeconds();
+
+		hours = hourCheck(hours);
+		min = timeCheck(min);
+		sec = timeCheck(sec);
+
+		document.getElementById("txt").innerHTML = hours + ":" + min + ":" + sec;
+		var t = setTimeout(startTime, 500);
+	}
+
+	function timeCheck(i){
+		if(i < 10){
+			i = "0"+i
+		};
+		return i;
+	}
+
+	function hourCheck(i){
+		if(i > 12){
+			i = i-12
+		};
+		return i;
+	}
+
+</script>
+</head>
+<br>
+<br>
+
+
+<body style="background-color: LightSkyBlue;" onload="clock()">
+
+<h1 style="text-align: center;">The Dowager Countess Clock</h1>
+
+<h2 style="text-align: center;">What fool doesn't know the time!?</h2>
+
+<b><div id="txt" style="text-align: center"></div></b>
+<br>
+<br>
+
+<img src="C:\Users\jtalb\Desktop\JS practice\DA.gif" border="9" align="middle">
+
+</body>
+</html>
+
