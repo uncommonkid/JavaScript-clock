@@ -14,11 +14,15 @@
 	h2 {font-family: "Alex Brush" ; font-size: 40px;} 
 	div {font-family: "Alex Brush" ; font-size: 50px;} 
 
+	/*adjusts and resizes the images using css*/
 	img{
 		display: block;
     	margin-left: auto;
    		margin-right: auto;
+   		width:  500px;
+   		height: 300px;
 	}
+
 	img.rounded-corners{
 		border-radius: 30px;
 	}
@@ -26,20 +30,32 @@
 	</style>
 
 <script>
+	//variable to determine am or pm
+	var dayNight = null;
+
+	//clock function that changes dayNight var and sets the id "txt" to be the time
 	function clock(){
 		var today = new Date();
 		var hours = today.getHours();
 		var min = today.getMinutes();
 		var sec = today.getSeconds();
 
+		if(hours > 12){
+			dayNight = "pm";
+		}
+		else{
+			dayNight = "am";
+		}
+
 		hours = hourCheck(hours);
 		min = timeCheck(min);
 		sec = timeCheck(sec);
 
-		document.getElementById("txt").innerHTML = hours + ":" + min + ":" + sec;
+		document.getElementById("txt").innerHTML = hours + ":" + min + ":" + sec + " " + dayNight;
 		var t = setTimeout(clock, 500);
 	}
 
+	//function to add a zero for both the minutes and seconds if under 10
 	function timeCheck(i){
 		if(i < 10){
 			i = "0"+i
@@ -47,6 +63,7 @@
 		return i;
 	}
 
+	//function to check the hour so that is based on 12 instead of 24
 	function hourCheck(i){
 		if(i > 12){
 			i = i-12
@@ -54,12 +71,75 @@
 		return i;
 	}
 
+	//creates an object for javaScript and a counter to cycle through 7 images
+	var buttonObj = document.images["jsButton"];
+	var counter = 0;
+
+	//4 following functions are for the button, changing for more positive UI
+	function changeImage(){
+		document.images["jsButton"].src="TeaTimeHover.jpg";
+		return true;
+	}
+	function changeImageBack(){
+		document.images["jsButton"].src="Capture.jpg";
+		return true;
+	}
+	function handleMDown(){
+		document.images["jsButton"].src ="Clicked.jpg"
+		changeMainImage();
+		return true;
+	}
+	function handleMUp(){
+		changeImage();
+		return true;
+	}
+
+	//function thats used to cycle through the images, probably a better way to do this might come back later to check
+	function changeMainImage(){
+			if(counter == 1){
+				document.images["pic"].src ="DA1.gif"
+				counter++;
+				return true;}
+			else if(counter == 2){
+				document.images["pic"].src ="DA2.gif"
+				counter++;
+				return true;
+			}
+			else if(counter == 3){
+				document.images["pic"].src ="DA3.gif"
+				counter++;
+				return true;
+			}
+			else if(counter == 4){
+				document.images["pic"].src ="DA4.gif"
+				counter++;
+				return true;
+			}
+			else if(counter == 5){
+				document.images["pic"].src ="DA5.gif"
+				counter++;
+				return true;
+			}
+			else if(counter == 6){
+				document.images["pic"].src ="DA6.gif"
+				counter=0;
+				return true;
+			}
+			else if(counter == 0){
+				document.images["pic"].src ="DA.gif"
+				counter++;
+				return true;
+			}
+
+
+		}
 </script>
+
 </head>
 <br>
 <br>
 
-
+<!--starts the background and loads the clock function-->
 <body style="background-color: LightSkyBlue;" onload="clock()">
 
 <h1 style="text-align: center;">The Dowager Countess Clock</h1>
@@ -70,14 +150,16 @@
 <br>
 <br>
 
-<img src="C:\Users\jtalb\Documents\GitHub\JavaScript-clock\JS practice\DA.gif"
+<img name="pic" src="DA.gif"
 	align="middle" class="wdn-stretcg rounded-corners" border="5px">
 
 <br><br>
 
-<img src="C:\Users\jtalb\Documents\GitHub\JavaScript-clock\JS practice\Capture.jpg"
+<a href="#" onMouseOver="return changeImage()" onMouseOut="return changeImageBack()"
+onMouseDown="return handleMDown()" onMouseUp="return handleMUp()">
+<img name="jsButton" src="Capture.jpg"
 	align="middle" class="wdn-stretcg rounded-corners" border="5px"
-	style="width:300px; height:90px;">
+	style="width:300px; height:75px;"></a>
 
 
 </body>
