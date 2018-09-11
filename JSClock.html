@@ -8,11 +8,21 @@
 	<link href='https://fonts.googleapis.com/css?family=Alex Brush' rel='stylesheet'>
 	
 
-	<!-- This is the CSS part that sets h1 to the follwong style -->
+	<!-- This is the CSS part that sets h1 to the following style as well as the clock and image-->
 	<style> 
 	h1 {font-family: "Alex Brush" ; font-size: 60px;} 
 	h2 {font-family: "Alex Brush" ; font-size: 40px;} 
 	div {font-family: "Alex Brush" ; font-size: 50px;} 
+
+	img{
+		display: block;
+    	margin-left: auto;
+   		margin-right: auto;
+	}
+	img.rounded-corners{
+		border-radius: 30px;
+	}
+
 	</style>
 
 <script>
@@ -27,7 +37,7 @@
 		sec = timeCheck(sec);
 
 		document.getElementById("txt").innerHTML = hours + ":" + min + ":" + sec;
-		var t = setTimeout(startTime, 500);
+		var t = setTimeout(clock, 500);
 	}
 
 	function timeCheck(i){
@@ -60,7 +70,15 @@
 <br>
 <br>
 
-<img src="C:\Users\jtalb\Desktop\JS practice\DA.gif" border="9" align="middle">
+<img src="C:\Users\jtalb\Documents\GitHub\JavaScript-clock\JS practice\DA.gif"
+	align="middle" class="wdn-stretcg rounded-corners" border="5px">
+
+<br><br>
+
+<img src="C:\Users\jtalb\Documents\GitHub\JavaScript-clock\JS practice\Capture.jpg"
+	align="middle" class="wdn-stretcg rounded-corners" border="5px"
+	style="width:300px; height:90px;">
+
 
 </body>
 </html>
